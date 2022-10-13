@@ -66,7 +66,7 @@ mongoose.connect(process.env.MONGO_URI)
         */
         //locationById(2019-1631)
         //locationByName("LUZ")
-        deleteById(2016-2222)
+        deleteLocationById(2018-1274)
         //await reponse();
         mongoose.connection.close();
     }).catch((e) => {
@@ -105,15 +105,26 @@ async function locationByName(filmName){
     }
 }
 
-async function deleteById(id) {
+async function deleteLocationById(id) {
     try {
-        const response = await Locations.findOneAndDelete({id:id});
-        console.log(response);
+        await Locations.findOneAndDelete({id:id});
+        console.log("Bien supprimé");
     } catch (err) {
         console.log("Cette location n'existe pas");
         console.log(err);
     }
 }
+
+async function addLocation(location) {
+    try {
+        await Locations.create(location);
+        console.log("La location a bien été ajouté");
+    } catch (err) {
+        console.log("An error occured");
+    }
+
+}
+
 //import mongoose from 'mongoose';
 
 //mongoose.connection.close();
